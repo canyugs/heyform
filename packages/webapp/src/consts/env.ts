@@ -5,11 +5,16 @@ export const LOGGED_COOKIE_NAME = 'HEYFORM_LOGGED_IN'
 export const LOCALE_COOKIE_NAME = 'HEYFORM_LOCALE'
 export const REDIRECT_COOKIE_NAME = 'HEYFORM_REDIRECT'
 
-export const HOMEPAGE_URL =
+// Remove trailing slash from URLs to prevent double slashes in path concatenation
+const trimTrailingSlash = (url: string) => url?.replace(/\/+$/, '') || ''
+
+export const HOMEPAGE_URL = trimTrailingSlash(
   window.heyform?.homepageURL || (import.meta.env.VITE_DASHBOARD_URL as string)
+)
 export const DASHBOARD_URL = HOMEPAGE_URL
-export const WEBSITE_URL =
+export const WEBSITE_URL = trimTrailingSlash(
   window.heyform?.websiteURL || (import.meta.env.VITE_HOMEPAGE_URL as string)
+)
 
 export const GRAPHQL_API_URL = import.meta.env.VITE_GRAPHQL_API_URL as string
 export const CDN_UPLOAD_URL = import.meta.env.VITE_CDN_UPLOAD_URL as string
