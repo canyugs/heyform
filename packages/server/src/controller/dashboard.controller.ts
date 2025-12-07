@@ -11,7 +11,7 @@ import {
 
 @Controller()
 export class DashboardController {
-  @Get(['/', '/dashboard', '/dashboard/*'])
+  @Get(['/', '/dashboard', '/dashboard/*', '/workspace', '/workspace/*', '/login', '/sign-up', '/forgot-password', '/reset-password', '/verify-email'])
   @Header('X-Frame-Options', 'SAMEORIGIN')
   index(@Res() res: Response) {
     return res.render('index', {

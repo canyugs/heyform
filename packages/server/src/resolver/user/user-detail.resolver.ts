@@ -1,4 +1,5 @@
 import { Auth, User } from '@decorator'
+import { VERIFY_USER_EMAIL } from '@environments'
 import { UserDetailType } from '@graphql'
 import { helper } from '@heyform-inc/utils'
 import { UserModel } from '@model'
@@ -22,7 +23,8 @@ export class UserDetailResolver {
       email: user.email,
       avatar: user.avatar,
       lang: user.lang,
-      isEmailVerified: user.isEmailVerified,
+      // If VERIFY_USER_EMAIL is disabled, always return true
+      isEmailVerified: VERIFY_USER_EMAIL ? user.isEmailVerified : true,
       isSocialAccount: isValid(result),
       isDeletionScheduled: user.isDeletionScheduled,
       deletionScheduledAt: user.deletionScheduledAt

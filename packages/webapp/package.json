@@ -6,7 +6,8 @@
     "dev": "vite",
     "build": "vite build",
     "build:form": "vite build --config vite.form.config.mts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "export": "mkdir -p ../server/static && cp -r dist/static/* ../server/static/ && cp dist/index.html ../server/view/"
   },
   "engines": {
     "node": "^18.0.0 || >=20.0.0"
